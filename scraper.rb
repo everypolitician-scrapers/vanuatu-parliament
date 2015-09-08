@@ -38,8 +38,7 @@ def scrape_list(url)
     unless (mplink = tds[0].css('a/@href')).empty?
       data.merge!(scrape_person(URI.join url, mplink.text))
     end
-    puts data
-    # ScraperWiki.save_sqlite([:id, :term], data)
+    ScraperWiki.save_sqlite([:name, :party, :term], data)
   end
 end
 
