@@ -23,10 +23,9 @@ def scrape_list(term, url)
   noko.css('.uk-table').xpath('.//tr[td]').each do |tr|
     tds = tr.css('td')
     name = tds[0].text.sub(/Hon.?\s*/, '').tidy
+    next if tds.count < 2 || name.empty? || name.match(/Deces?ased/) || name == "Vacant"
 
-    next if tds.count < 2 || name.empty? || name.match(/Deces?ased/)
-
-    data = { 
+    data = {
       name: name,
       # role: tds[1].text.tidy,
       party: tds[2].text.tidy,
@@ -45,7 +44,7 @@ end
 
 def scrape_person(url)
   noko = noko_for(url)
-  data = { 
+  data = {
     image: noko.css('a.thumbnail img/@src').text,
     source: url.to_s,
     id: url.to_s.split('/').last.split('-').first,
