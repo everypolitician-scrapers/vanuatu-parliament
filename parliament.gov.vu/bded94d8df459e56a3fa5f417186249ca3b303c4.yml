@@ -18,17 +18,17 @@ response:
     message: OK
   headers:
     Date:
-    - Fri, 02 Sep 2016 11:29:43 GMT
+    - Sat, 03 Sep 2016 04:12:46 GMT
     Server:
     - Apache
     Set-Cookie:
-    - fbd491666858c1a5ff57bf732593f650=gcq3aed0ncie9mbldcatq2bi72; path=/; HttpOnly
+    - fbd491666858c1a5ff57bf732593f650=39397mev7adfnr32j61tk89pe0; path=/; HttpOnly
     P3p:
     - CP="NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM"
     Expires:
     - Mon, 1 Jan 2001 00:00:00 GMT
     Last-Modified:
-    - Fri, 02 Sep 2016 11:29:43 GMT
+    - Sat, 03 Sep 2016 04:12:47 GMT
     Cache-Control:
     - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
     Pragma:
@@ -38,10 +38,10 @@ response:
     Vary:
     - Accept-Encoding
     Content-Length:
-    - '4481'
+    - '4480'
     Content-Type:
     - text/html; charset=utf-8
   body:
     encoding: ASCII-8BIT
   http_version: 
-recorded_at: Fri, 02 Sep 2016 11:29:44 GMT
+recorded_at: Sat, 03 Sep 2016 04:12:47 GMT
