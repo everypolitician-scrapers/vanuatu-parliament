@@ -11,7 +11,7 @@ require 'scraped_page_archive/open-uri'
 
 class String
   def tidy
-    self.gsub(/[[:space:]]+/, ' ').strip
+    gsub(/[[:space:]]+/, ' ').strip
   end
 end
 
@@ -24,7 +24,7 @@ def scrape_list(term, url)
   noko.css('.uk-table').xpath('.//tr[td]').each do |tr|
     tds = tr.css('td')
     name = tds[0].text.sub(/Hon.?\s*/, '').tidy
-    next if tds.count < 2 || name.empty? || name.match(/Deces?ased/) || name == "Vacant"
+    next if tds.count < 2 || name.empty? || name.match(/Deces?ased/) || name == 'Vacant'
 
     data = {
       name: name,
@@ -32,13 +32,13 @@ def scrape_list(term, url)
       party: tds[2].text.tidy,
       constituency: tds[3].text.tidy,
       term: term,
-      source: url.to_s,
-    } rescue binding.pry
+      source: url.to_s
+    }
 
     unless (mplink = tds[0].css('a/@href')).empty?
-      data.merge!(scrape_person(URI.join url, mplink.text))
+      data.merge!(scrape_person(URI.join(url, mplink.text)))
     end
-    ScraperWiki.save_sqlite([:name, :party, :term], data)
+    ScraperWiki.save_sqlite(%i[name party term], data)
   end
 end
 
@@ -47,7 +47,7 @@ def scrape_person(url)
   data = {
     image: noko.css('a.thumbnail img/@src').text,
     source: url.to_s,
-    id: url.to_s.split('/').last.split('-').first,
+    id: url.to_s.split('/').last.split('-').first
   }
   data[:image] = URI.join(url, data[:image]).to_s unless data[:image].to_s.empty?
   data
