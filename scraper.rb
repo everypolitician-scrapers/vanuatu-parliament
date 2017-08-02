@@ -32,6 +32,8 @@ def scrape_list(term, url)
     unless (mplink = tds[0].css('a/@href')).empty?
       data.merge!(scrape_person(URI.join(url, mplink.text)))
     end
+
+    puts data.reject { |_, v| v.to_s.empty? }.sort_by { |k, _| k }.to_h if ENV['MORPH_DEBUG']
     ScraperWiki.save_sqlite(%i[name party term], data)
   end
 end
