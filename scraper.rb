@@ -49,4 +49,5 @@ def scrape_person(url)
   data
 end
 
+ScraperWiki.sqliteexecute('DROP TABLE data') rescue nil
 scrape_list(11, 'http://parliament.gov.vu/index.php/memebers/members-of-11th-legislatture')
